@@ -30,14 +30,23 @@ export default class App extends React.Component {
   }
 
   render() {
+    var sixofspades = { value:6, suit:"S"};
+    var threeofdiamonds = { value:3, suit:"S"};
+    var jackofclubs = { value:"J", suit:"C"};
     return (
-      <View>
+      <View style={styles.container}>
         <View 
           onLayout={this.setDropZoneValues.bind(this)}
           style={styles.dropZone}>
           <Text style={styles.text}>Drop me here!</Text>
         </View>
-        <Card dropZoneValues={dzone}/>
+        <Card dropZoneValues={dzone} card={sixofspades} position={1}/>
+        <Card dropZoneValues={dzone} card={threeofdiamonds} position={2}/>
+        <Card dropZoneValues={dzone} card={jackofclubs} position={3}/>
+        <Card dropZoneValues={dzone} card={sixofspades} position={4}/>
+        <Card dropZoneValues={dzone} card={threeofdiamonds} position={5}/>
+        <Card dropZoneValues={dzone} card={jackofclubs} position={6}/>
+        <Card dropZoneValues={dzone} card={jackofclubs} position={7}/>
       </View>
     );
   }
@@ -45,14 +54,11 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#2D7551'
   },
   dropZone    : {
     height         : 100,
-    backgroundColor:'#2c3e50'
+    backgroundColor:'#3fa572'
   },
   text        : {
     marginTop   : 25,

@@ -9,7 +9,10 @@ export default class Card extends React.Component {
 
     this.state = {
       pan:new Animated.ValueXY(), 
-      dropZoneValues: this.props.dropZoneValues
+      dropZoneValues: this.props.dropZoneValues,
+      value : this.props.card.value,
+      suit : this.props.card.suit,
+      position : this.props.position
     };
 
     this.panResponder = PanResponder.create({
@@ -22,7 +25,7 @@ export default class Card extends React.Component {
         this.state.pan.setOffset({x: this.state.pan.x._value, y: this.state.pan.y._value});
         this.state.pan.setValue({x: 0, y: 0});
       },
-      onPanResponderRelease           : (e, gesture) => {
+      onPanResponderRelease: (e, gesture) => {
         if(this.isDropZone(gesture)){
           this.state.pan.flattenOffset();
         }else{
@@ -40,18 +43,30 @@ export default class Card extends React.Component {
     return gesture.moveY > dz.y && gesture.moveY < dz.y + dz.height;
   }
 
+  _calcPos = (position) => {
+    let Window = Dimensions.get('window');
+    return {
+      position    : 'absolute',
+      top         : Window.height/2,
+      left        : position * 50,
+    };
+  }
+
   render(){
+
+    const {value,suit,position} = this.state;
+
     return (
       <View>
-        <View style={styles.draggableContainer}>
+        <View style={this._calcPos(position)}>
           <Animated.View 
             {...this.panResponder.panHandlers}
             style={[this.state.pan.getLayout(), styles.card]}>
             <View style={styles.leftTop}>
-              <Text style={styles.text}>6</Text>
+              <Text style={styles.text}>{value}</Text>
             </View>
             <View style={styles.rightBottom}>
-              <Text style={styles.text}>6</Text>
+              <Text style={styles.text}>{suit}</Text>
             </View>
           </Animated.View>
         </View>
@@ -60,37 +75,24 @@ export default class Card extends React.Component {
   }
 }
 
-let CIRCLE_RADIUS = 36;
-let Window = Dimensions.get('window');
 let styles = StyleSheet.create({
-  mainContainer: {
-    flex    : 1
-  },
-  draggableContainer: {
-    position    : 'absolute',
-    top         : Window.height/2 - CIRCLE_RADIUS,
-    left        : Window.width/2 - CIRCLE_RADIUS,
-  },
-  circle      : {
-    backgroundColor     : '#1abc9c',
-    width               : CIRCLE_RADIUS*2,
-    height              : CIRCLE_RADIUS*2,
-    borderRadius        : CIRCLE_RADIUS
-  },
-  card      : {
+  card : {
     backgroundColor     : '#1abc9c',
     width               : 125,
-    height              : 185
+    height              : 185,
+    borderStyle         : "solid",
+    borderColor         : "black"
   },
-  text        : {
+  text : {
     marginLeft  : 5,
     marginRight : 5,
     textAlign   : 'center',
-    color       : '#fff'
+    color       : 'black',
+    fontSize    : 40
   },
   leftTop: {
-    width: 20,
-    height: 40,
+    width: 40,
+    height: 80,
     flexDirection: 'column',
     position: 'absolute',
     top: 0,
@@ -98,11 +100,11 @@ let styles = StyleSheet.create({
     backgroundColor: 'transparent'
   },
   rightBottom: {
-    width: 20,
-    height: 40,
+    width: 40,
+    height: 80,
     flexDirection: 'column',
     position: 'absolute',
-    bottom: 0,
+    bottom: -30,
     right: 0,
     backgroundColor: 'transparent'
   },
