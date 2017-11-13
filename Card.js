@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Animated, Dimensions, PanResponder } from 'react-native';
+import { StyleSheet, Text, View, Animated, Dimensions, PanResponder, Image } from 'react-native';
 import PropTypes from 'prop-types';
 
 export default class Card extends React.Component {
@@ -55,6 +55,7 @@ export default class Card extends React.Component {
   render(){
 
     const {value,suit,position} = this.state;
+    var imgsrc = `./graphics/${value}_of_${suit}-min.jpg`;
 
     return (
       <View>
@@ -63,10 +64,9 @@ export default class Card extends React.Component {
             {...this.panResponder.panHandlers}
             style={[this.state.pan.getLayout(), styles.card]}>
             <View style={styles.leftTop}>
-              <Text style={styles.text}>{value}</Text>
-            </View>
-            <View style={styles.rightBottom}>
-              <Text style={styles.text}>{suit}</Text>
+              <Image
+                source={require('./graphics/jack_of_spades-min.jpg')}
+              />
             </View>
           </Animated.View>
         </View>
