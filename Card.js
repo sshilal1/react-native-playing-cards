@@ -2,6 +2,21 @@ import React from 'react';
 import { StyleSheet, Text, View, Animated, Dimensions, PanResponder, Image } from 'react-native';
 import PropTypes from 'prop-types';
 
+var _rotate = {
+  '1' : '-20deg',
+  '2' : '-10deg',
+  '3' : '0deg',
+  '4' : '10deg',
+  '5' : '20deg'
+}
+var _transY = {
+  '1' : 0,
+  '2' : -10,
+  '3' : -20,
+  '4' : -10,
+  '5' : 0,
+}
+
 export default class Card extends React.Component {
 
   constructor(props) {
@@ -48,8 +63,18 @@ export default class Card extends React.Component {
     return {
       position    : 'absolute',
       top         : Window.height/2,
-      left        : position * 50,
+      left        : (position - 1) * 50,
     };
+  }
+
+  _calcHandStyle = (position) => {
+    return {
+      width         : 105,
+      height        : 150,
+      borderWidth   : 1,
+      borderRadius  : 5,
+      transform     : [{rotateZ: _rotate[position]}, {translateY: _transY[position]}]
+    }
   }
 
   render(){
@@ -62,11 +87,11 @@ export default class Card extends React.Component {
         <View style={this._calcPos(position)}>
           <Animated.View 
             {...this.panResponder.panHandlers}
-            style={[this.state.pan.getLayout(), styles.card]}>
+            style={[this.state.pan.getLayout()]}>
             <View>
               <Image
-                style={styles.card}
-                source={require('./graphics/jack_of_spades-min.jpg')}
+                style={this._calcHandStyle(position)}
+                source={require('./graphics/queen_of_spades-min.jpg')}
                 resizeMode='contain'
               />
             </View>
@@ -78,11 +103,6 @@ export default class Card extends React.Component {
 }
 
 let styles = StyleSheet.create({
-  card : {
-    width               : 85,
-    height              : 150,
-    borderWidth         : 1,
-  },
   text : {
     marginLeft  : 5,
     marginRight : 5,

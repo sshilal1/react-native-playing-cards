@@ -44,9 +44,7 @@ export default class App extends React.Component {
         <Card dropZoneValues={dzone} card={threeofdiamonds} position={2}/>
         <Card dropZoneValues={dzone} card={jackofclubs} position={3}/>
         <Card dropZoneValues={dzone} card={sixofspades} position={4}/>
-        <Card dropZoneValues={dzone} card={threeofdiamonds} position={5}/>
-        <Card dropZoneValues={dzone} card={jackofclubs} position={6}/>
-        <Card dropZoneValues={dzone} card={jackofclubs} position={7}/>
+        <Card dropZoneValues={dzone} card={sixofspades} position={5}/>
       </View>
     );
   }
