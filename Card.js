@@ -63,9 +63,11 @@ export default class Card extends React.Component {
           <Animated.View 
             {...this.panResponder.panHandlers}
             style={[this.state.pan.getLayout(), styles.card]}>
-            <View style={styles.leftTop}>
+            <View>
               <Image
+                style={styles.card}
                 source={require('./graphics/jack_of_spades-min.jpg')}
+                resizeMode='contain'
               />
             </View>
           </Animated.View>
@@ -77,11 +79,9 @@ export default class Card extends React.Component {
 
 let styles = StyleSheet.create({
   card : {
-    backgroundColor     : '#1abc9c',
-    width               : 125,
-    height              : 185,
-    borderStyle         : "solid",
-    borderColor         : "black"
+    width               : 85,
+    height              : 150,
+    borderWidth         : 1,
   },
   text : {
     marginLeft  : 5,
