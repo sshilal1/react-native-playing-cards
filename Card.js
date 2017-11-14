@@ -72,7 +72,7 @@ export default class Card extends React.Component {
   _calcHandStyle = (position) => {
     return {
       width         : 105,
-      height        : 150,
+      height        : 155,
       borderWidth   : 1,
       borderRadius  : 5,
       transform     : [{rotateZ: _rotate[position]}, {translateY: _transY[position]}]
@@ -82,7 +82,6 @@ export default class Card extends React.Component {
   render(){
 
     const {value,suit,position} = this.state;
-    var imgsrc = `./graphics/${value}_of_${suit}-min.jpg`;
     var imgref = `${suit}${value}`;
 
     return (
