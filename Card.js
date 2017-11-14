@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, Animated, Dimensions, PanResponder, Image } from 'react-native';
 import PropTypes from 'prop-types';
 
+import Images from './images';
+
 var _rotate = {
   '1' : '-20deg',
   '2' : '-10deg',
@@ -81,6 +83,7 @@ export default class Card extends React.Component {
 
     const {value,suit,position} = this.state;
     var imgsrc = `./graphics/${value}_of_${suit}-min.jpg`;
+    var imgref = `${suit}${value}`;
 
     return (
       <View>
@@ -91,7 +94,7 @@ export default class Card extends React.Component {
             <View>
               <Image
                 style={this._calcHandStyle(position)}
-                source={require('./graphics/queen_of_spades-min.jpg')}
+                source={Images[imgref]}
                 resizeMode='contain'
               />
             </View>

@@ -30,9 +30,9 @@ export default class App extends React.Component {
   }
 
   render() {
-    var sixofspades = { value:6, suit:"spades"};
-    var threeofdiamonds = { value:3, suit:"diamonds"};
-    var jackofclubs = { value:"jack", suit:"clubs"};
+    var sixofspades = { value:6, suit:"s"};
+    var threeofdiamonds = { value:3, suit:"d"};
+    var jackofclubs = { value:"j", suit:"c"};
     return (
       <View style={styles.container}>
         <View 
