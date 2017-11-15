@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import Card from './Card';
+import Hand from './Hand';
 
 // Need to dynamically create this...
 // Will be diff for ios and android...
@@ -33,6 +34,7 @@ export default class App extends React.Component {
     var sixofspades = { value:6, suit:"s"};
     var threeofdiamonds = { value:3, suit:"d"};
     var jackofclubs = { value:"j", suit:"c"};
+    var cards = [sixofspades,threeofdiamonds,jackofclubs,sixofspades,threeofdiamonds,jackofclubs,sixofspades];
     return (
       <View style={styles.container}>
         <View 
@@ -45,6 +47,8 @@ export default class App extends React.Component {
         <Card dropZoneValues={dzone} card={jackofclubs} position={3}/>
         <Card dropZoneValues={dzone} card={sixofspades} position={4}/>
         <Card dropZoneValues={dzone} card={sixofspades} position={5}/>
+        <Card dropZoneValues={dzone} card={sixofspades} position={6}/>
+        <Card dropZoneValues={dzone} card={sixofspades} position={7}/>
       </View>
     );
   }

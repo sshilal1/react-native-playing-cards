@@ -5,18 +5,22 @@ import PropTypes from 'prop-types';
 import Images from './images';
 
 var _rotate = {
-  '1' : '-20deg',
-  '2' : '-10deg',
-  '3' : '0deg',
-  '4' : '10deg',
-  '5' : '20deg'
+  '1' : '-9deg',
+  '2' : '-6deg',
+  '3' : '-3deg',
+  '4' : '0deg',
+  '5' : '3deg',
+  '6' : '6deg',
+  '7' : '9deg'
 }
 var _transY = {
   '1' : 0,
-  '2' : -10,
-  '3' : -20,
-  '4' : -10,
-  '5' : 0,
+  '2' : -8,
+  '3' : -12,
+  '4' : -15,
+  '5' : -12,
+  '6' : -8,
+  '7' : 0
 }
 
 export default class Card extends React.Component {
@@ -62,10 +66,11 @@ export default class Card extends React.Component {
 
   _calcPos = (position) => {
     let Window = Dimensions.get('window');
+    console.log(Window);
     return {
       position    : 'absolute',
       top         : Window.height/2,
-      left        : (position - 1) * 50,
+      left        : (position - 1) * 30 + 20,
     };
   }
 
